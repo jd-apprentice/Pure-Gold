@@ -54,6 +54,7 @@ a:hover {
 #bg-main {
   background-image: url(/img/bg.jpg);
   background-size: cover;
+  /* hola */
 }
 
 #contact {
