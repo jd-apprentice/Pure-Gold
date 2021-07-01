@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
@@ -32,6 +33,7 @@
   text-anchor: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -50,7 +52,7 @@ a:hover {
 }
 
 #bg-main {
-  background-image: url(/img/bg.jpg);
+  background-image: url("https://i.ibb.co/hCkCSPq/bg.jpg");
   background-size: cover;
 }
 
