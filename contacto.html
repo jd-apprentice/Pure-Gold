@@ -7,41 +7,37 @@
     <link rel="shortcut icon" type="image/jpg" href="logo.png" />
     <link href="sass/custom.css" rel="stylesheet" />
   </head>
-  <body class="d-flex h-100 text-center text-white bg-dark contacto-bg">
-    <!--Navbar -->
-    <div
-      id="contacto-bg"
-      class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"
-    >
-      <nav
-        class="
-          navbar navbar-dark
-          bg-dark
-          nav nav-masthead
-          justify-content-center
-        "
-        style="background-color: #0095ff"
-      >
-        <header class="mb-auto">
-          <div>
-            <nav class="nav nav-masthead fs-4">
-              <a
-                class="nav-link text-warning"
-                aria-current="page"
-                href="index.html"
-                >Inicio</a
-              >
-              <a class="nav-link text-warning" href="catalogo.html">Catalogo</a>
-              <a class="nav-link active text-warning" href="contacto.html"
-                >Contacto</a
-              >
-            </nav>
-          </div>
-        </header>
-      </nav>
 
-      <!-- Form Contact -->
+  <body id="contacto-bg">
+    <!--  Navbar -->
 
+    <div class="d-flex p-3 mx-auto flex-column bg-dark">
+      <div class="container-fluid">
+        <div>
+          <h3 class="float-md-start mb-0 text-warning">
+            <a id="changeHover" class="nav-link text-warning" href="index.html"
+              >Pure Gold</a
+            >
+          </h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="fs-5 nav-link text-warning" href="index.html">Inicio</a>
+            <a
+              class="fs-5 nav-link text-warning"
+              aria-current="page"
+              href="catalogo.html"
+              >Catalogo</a
+            >
+            <a class="fs-5 nav-link active text-warning" href="contacto.html"
+              >Contacto</a
+            >
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Contact -->
+
+    <div class="container">
       <main class="px-3">
         <section
           id="contact"
@@ -94,6 +90,10 @@
         </section>
       </main>
     </div>
+
+    <footer class="mt-auto bg-dark text-center">
+      <p class="text-light">&copy; PureGold</p>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

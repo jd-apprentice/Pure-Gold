@@ -56,6 +56,11 @@ a:hover {
   background-color: #ff9800;
 }
 
+.catalogo-bg {
+  background-image: url("../img/catalogo.jpg");
+  background-size: cover;
+}
+
 #bg-main {
   background-image: url("../img/bg.jpg");
   background-size: cover;
