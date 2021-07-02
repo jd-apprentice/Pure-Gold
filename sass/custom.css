@@ -58,16 +58,15 @@ a:hover {
 
 .catalogo-bg {
   background-image: url("../img/catalogo.jpg");
-  background-size: cover;
+  background-size: contain;
 }
 
-#bg-main {
+.bg-main {
   background-image: url("../img/bg.jpg");
   background-size: cover;
-  display: none;
 }
 
-#contacto-bg {
+.contacto-bg {
   background-image: url("../img/contacto.jpg");
   background-size: cover;
 }
