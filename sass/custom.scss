@@ -55,20 +55,18 @@ a:hover {
   background-color: #ff9800;
 }
 
-.catalogo-bg {
-  background-image: url("../img/catalogo.jpg");
-  background-size: contain;
-}
-
 .bg-main {
   background-image: url("../img/bg.jpg");
   background-position: center;
 }
 
+.catalogo-bg {
+  background-color: #ff9800;
+}
+
 .contacto-bg {
-  background-image: url("../img/contacto.jpg");
-  background-repeat: no-repeat;
-  height: 100vh;
+  background-color: #ff9800;
+  background-size: auto;
 }
 
 #contact {
@@ -76,11 +74,11 @@ a:hover {
       linear,
       left top,
       left bottom,
-      from(rgba(0, 0, 0, 0.5)),
-      to(rgba(0, 0, 0, 0.5))
+      from(rgba(0, 0, 0, 2)),
+      to(rgba(0, 0, 0, 2))
     ),
     url("../img/contacto2.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../img/contacto2.jpg");
   background-size: cover;
   background-position: center;
@@ -90,6 +88,7 @@ a:hover {
   background-size: cover;
   background-position: center;
 }
+
 // Spinner
 #spinner {
   width: 100%;
@@ -141,10 +140,9 @@ a:hover {
   box-sizing: content-box;
 }
 
-@media (max-width: 992px) {
-  #contactoF p {
-    color: red;
-  }
+#cabecera {
+  background-image: url("../img/catalogo.jpg");
+  background-size: cover;
 }
 
 @import "../node_modules/bootswatch/dist/materia/variables";
