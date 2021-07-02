@@ -60,12 +60,12 @@ a:hover {
   background-size: contain;
 }
 
-#bg-main {
+.bg-main {
   background-image: url("../img/bg.jpg");
   background-size: cover;
 }
 
-#contacto-bg {
+.contacto-bg {
   background-image: url("../img/contacto.jpg");
   background-size: cover;
 }
@@ -97,7 +97,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   background-color: #000;
-  position: absolute;
+  position: relative;
 }
 @keyframes ldio-4xvv7kp8ach {
   0% {
