@@ -67,8 +67,7 @@ a:hover {
 
 .contacto-bg {
   background-image: url("../img/contacto.jpg");
-  background-repeat: no-repeat;
-  height: 100vh;
+  background-size: cover;
 }
 
 #contact {
@@ -141,9 +140,9 @@ a:hover {
   box-sizing: content-box;
 }
 
-@media (max-width: 992px) {
-  #contactoF p {
-    color: red;
+@media (min-width: 992px) {
+  h1 {
+    color: #ff9800;
   }
 }
 
