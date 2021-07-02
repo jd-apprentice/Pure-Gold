@@ -63,12 +63,13 @@ a:hover {
 
 .bg-main {
   background-image: url("../img/bg.jpg");
-  background-size: cover;
+  background-size: contain;
 }
 
 .contacto-bg {
   background-image: url("../img/contacto.jpg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 #contact {
