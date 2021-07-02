@@ -53,18 +53,18 @@ a:hover {
 }
 
 #bg-main {
-  background-image: url("/img/bg.jpg");
+  background-image: url("../img/bg.jpg");
   background-size: cover;
 }
 
 #contacto-bg {
-  background-image: url("/img/contacto.jpg");
+  background-image: url("../img/contacto.jpg");
   background-size: cover;
 }
 
 #contact {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/contacto2.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/contacto2.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("../img/contacto2.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/contacto2.jpg");
   background-size: cover;
   background-position: center;
 }
