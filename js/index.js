@@ -4,6 +4,10 @@ window.onload = () => {
   const cont1 = document.querySelector("#spinner");
   cont1.style.display = "none";
   H.classList.remove("overflow-hidden");
+  let productos = JSON.parse(localStorage.getItem("cart"));
+  productos.forEach((arrayP) => {
+    addP(arrayP);
+  });
 };
 
 //POO
@@ -19,24 +23,36 @@ class Product {
 class addProducts {
   addProduct(product) {
     arrProduct.push(product);
-    console.log(arrProduct);
+    localStorage.setItem("cart", JSON.stringify(arrProduct));
   }
 }
+let addP = (product) => {
+  const addProduct = new addProducts();
+  addProduct.addProduct(product);
+};
 
-const btn = document.querySelectorAll(".prenda").forEach((btn) =>
-  btn.addEventListener("click", (e) => {
-    const divNamePrice = e.target.parentElement.parentElement;
-    const price = divNamePrice.querySelector(".price");
-    const name = divNamePrice.querySelector(".name");
-    const product = new Product(name.textContent, price.textContent);
-    const addProduct = new addProducts();
-    addProduct.addProduct(product);
-  })
-);
+let addNumItem = () => {
+  const grabCarrito = document.querySelector("#carrito-items");
+  grabCarrito.innerHTML++;
+};
+
+let insert = (e) => {
+  const divNamePrice = e.target.parentElement.parentElement;
+  const price = divNamePrice.querySelector(".price");
+  const name = divNamePrice.querySelector(".name");
+  const product = new Product(name.textContent, price.textContent);
+  addP(product);
+  addNumItem();
+};
+
+const btn = document
+  .querySelectorAll(".prenda")
+  .forEach((btn) => btn.addEventListener("click", insert));
 
 //SHOW CART
-const grabModal = document.getElementById("modalCarrito");
-const grabTexto = document.getElementById("modalTexto");
+const grabModal = document.querySelector("#modalCarrito");
+const grabTexto = document.querySelector("#modalTexto");
+
 const shoppingCart = document
   .querySelector("#botton-carrito")
   .addEventListener("click", () => {
@@ -46,7 +62,6 @@ const shoppingCart = document
     arrProduct.forEach((prod) => {
       grabTexto.innerText += `${prod._name} Se anadio al carrito`;
       grabTexto.appendChild(br);
-      console.log(prod._name);
     });
   });
 
