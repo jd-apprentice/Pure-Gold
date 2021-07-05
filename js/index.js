@@ -55,23 +55,25 @@ const btn = document
 const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
-const shoppingCart = document
-  .querySelector("#botton-carrito")
-  .addEventListener("click", () => {
-    let total = 0;
+let agregarCarrito = () => {
+  let total = 0;
     const br = document.createElement("br");
     const price = document.createElement("p");
-    price.style.margin = "10px";
+    const myicon = document.createElement("i");
+    myicon.classList.add("bi-x-lg", "ms-4", "text-danger");
     grabModal.style.display = "flex";
     grabTexto.innerText = "";
     arrProduct.forEach((prod) => {
       grabTexto.innerText += `${prod._name} Se anadio al carrito. Costo${prod._price}`;
+      grabTexto.in(myicon); // Necesita arreglos
       grabTexto.appendChild(br);
       total += parseInt(prod._price);
     });
     price.innerHTML = `Total ${total}$`;
     grabTexto.appendChild(price);
-  });
+}
+
+const shoppingCart = document.querySelector("#botton-carrito").addEventListener("click", agregarCarrito) 
 
 // CLOSE CART
 const modalX = document
@@ -81,57 +83,47 @@ const modalCerrar = document
   .getElementById("modalCerrar")
   .addEventListener("click", () => (grabModal.style.display = "none"));
 
-// // Elementos de la tienda
+// CART BOTTOM
 
-// var primerObjeto = {
-//   tipo: "Camisa",
-//   talle: "L",
-//   nombre: "Camisa floreada para mujer\n",
-// };
+const $shoppingCartBottom = document.querySelector('#carritoBottom');
+window.addEventListener("scroll", () => {
+  if (document.documentElement.scrollTop > 98) {
+    carritoBottom.style.display = "block";
+  } else {
+    carritoBottom.style.display = "none";
+  }
 
-// var segundoObjeto = {
-//   tipo: "Pantalon",
-//   talle: "S",
-//   nombre: "Vaquero corderito\n",
-// };
+window.addEventListener("scroll", () => {
+  if (document.documentElement.scrollTop < 98) {
+    grabModal.style.display = "none";
+  }
+})  
 
-// // Array elementos
+  $shoppingCartBottom.addEventListener("click", () => {
+    agregarCarrito();
+  })
 
-// let prendasRopa = [];
+})
 
-// // Catalogo
+// WHATSAPP BUTTON
 
-// function añadirCarrito1() {
-//   grabCarrito.innerText++;
-//   prendasRopa.push(primerObjeto.nombre);
-// }
+const grabModalWSP = document.querySelector('#modalWSP');
+const grabFormWSP = document.querySelector('#formWSP');
+const grabWhatsapp = document.querySelector('#whatsapp').addEventListener('click', () => (grabModalWSP.style.display = 'flex'));
 
-// function añadirCarrito2() {
-//   grabCarrito.innerText++;
-//   prendasRopa.push(segundoObjeto.nombre);
-// }
+const grabXWSP = document
+.querySelector('#xWSP')
+.addEventListener('click', () => (grabModalWSP.style.display = 'none'));
+const grabCerrarWSP = document
+.querySelector('#cerrarWSP')
+.addEventListener('click', () => (grabModalWSP.style.display = 'none'));
+const grabEnviarWSP = document
+.querySelector('#enviarWSP')
+.addEventListener('click', () => {
 
-// function mostrarModal() {
-//   grabModal.style.display = "flex";
-//   grabTexto.innerText = `${prendasRopa} es tu producto en el carrito`;
-// }
+  let nombreForm = document.querySelector('#inputNombre').value;
+  let mensajeForm = document.querySelector('#inputMensaje').value;
 
-// function cerrar() {
-//   grabModal.style.display = "none";
-// }
-
-// const bottonAñadir1 = document.getElementById("Prenda1");
-// const bottonAñadir2 = document.getElementById("Prenda2");
-// const modalX = document.getElementById("modalX");
-// const modalCerrar = document.getElementById("modalCerrar");
-
-// let grabTexto = document.getElementById("modalTexto");
-// let grabCarrito = document.getElementById("carrito-items");
-// let grabModal = document.getElementById("modalCarrito");
-// let grabBotton = document.getElementById("botton-carrito");
-
-// bottonAñadir1.addEventListener("click", añadirCarrito1);
-// bottonAñadir2.addEventListener("click", añadirCarrito2);
-// grabBotton.addEventListener("click", mostrarModal);
-// modalX.addEventListener("click", cerrar);
-// modalCerrar.addEventListener("click", cerrar);
+  let url =`https://api.whatsapp.com/send?phone=541123882740&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+  window.open(url, '_blank');
+});

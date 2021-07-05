@@ -336,6 +336,41 @@
     </div>
   </div>
 
+  <svg id="carritoBottom" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+  </svg>
+
+<!--  Modal whatsapp -->
+
+  <div id="modalWSP" class="modal" tabindex="-1">
+    <div class="modal-dialog position-fixed bottom-0">
+      <div class="modal-content mb-5 ms-5">
+        <div class="modal-header">
+          <h5 class="modal-title">Preguntas y consultas</h5>
+          <button id="xWSP" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formWSP"> 
+            <div>
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input id="inputNombre" type="text" class="form-control" id="recipient-name">
+            </div>
+            <div>
+              <label for="message-text" class="col-form-label">Mensaje:</label>
+              <textarea id="inputMensaje" class="form-control" id="message-text"></textarea>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button id="cerrarWSP" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button id="enviarWSP" type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img class="img-fluid" id="whatsapp" src="https://www.vectorlogo.zone/logos/whatsapp/whatsapp-tile.svg" alt="WSP" width="50px" height="50px">
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

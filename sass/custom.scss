@@ -156,6 +156,21 @@ a:hover {
   background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
   }
 
+#carritoBottom {
+  right: 20px;
+  bottom: 25px;
+  cursor: pointer;
+  position: fixed;
+  display: none;
+}
+
+#whatsapp {
+  left: 20px;
+  bottom: 25px;
+  cursor: pointer;
+  position: fixed;
+}
+
 @import "../node_modules/bootswatch/dist/materia/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootswatch/dist/materia/bootswatch";

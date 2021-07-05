@@ -183,6 +183,21 @@ a:hover {
   background: linear-gradient(to right, #6a11cb, #2575fc);
 }
 
+#carritoBottom {
+  right: 20px;
+  bottom: 25px;
+  cursor: pointer;
+  position: fixed;
+  display: none;
+}
+
+#whatsapp {
+  left: 20px;
+  bottom: 25px;
+  cursor: pointer;
+  position: fixed;
+}
+
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
