@@ -2,8 +2,10 @@
 window.onload = () => {
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
+  const grabCarrito = document.querySelector("#carrito-items");
   cont1.style.display = "none";
   H.classList.remove("overflow-hidden");
+  grabCarrito.innerHTML = localStorage.getItem("cont");
   let productos = JSON.parse(localStorage.getItem("cart"));
   productos.forEach((arrayP) => {
     addP(arrayP);
@@ -32,6 +34,7 @@ let addP = (product) => {
 };
 
 let addNumItem = () => {
+  localStorage.setItem("cont", Number(localStorage.getItem("cont")) + 1);
   const grabCarrito = document.querySelector("#carrito-items");
   grabCarrito.innerHTML++;
 };
@@ -44,7 +47,6 @@ let insert = (e) => {
   addP(product);
   addNumItem();
 };
-
 const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
@@ -56,13 +58,19 @@ const grabTexto = document.querySelector("#modalTexto");
 const shoppingCart = document
   .querySelector("#botton-carrito")
   .addEventListener("click", () => {
+    let total = 0;
     const br = document.createElement("br");
+    const price = document.createElement("p");
+    price.style.margin = "10px";
     grabModal.style.display = "flex";
     grabTexto.innerText = "";
     arrProduct.forEach((prod) => {
-      grabTexto.innerText += `${prod._name} Se anadio al carrito`;
+      grabTexto.innerText += `${prod._name} Se anadio al carrito. Costo${prod._price}`;
       grabTexto.appendChild(br);
+      total += parseInt(prod._price);
     });
+    price.innerHTML = `Total ${total}$`;
+    grabTexto.appendChild(price);
   });
 
 // CLOSE CART
