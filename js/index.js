@@ -16,9 +16,10 @@ window.onload = () => {
 const arrProduct = [];
 
 class Product {
-  constructor(name, price) {
+  constructor(name, price, id) {
     this._name = name;
     this._price = price;
+    this._id = id;
   }
 }
 
@@ -57,20 +58,32 @@ const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
   let total = 0;
-    const price = document.createElement("p");
-    const myicon = document.createElement("i");
-    myicon.classList.add("bi-x-lg", "ms-4", "text-danger");
-    grabModal.style.display = "flex";
-    grabTexto.innerText = "";
-    arrProduct.forEach((prod) => {
-      grabTexto.innerHTML += `${prod._name} Se anadio al carrito. Costo${prod._price} ${myicon}`;
-      total += parseInt(prod._price);
-    });
-    price.innerHTML = `Total ${total}$`;
-    grabTexto.appendChild(price);
-}
+  let count = 0;
+  const price = document.createElement("p");
+  grabModal.style.display = "flex";
+  grabTexto.innerText = "";
+  price.className = "text-center";
+  arrProduct.forEach((prod) => {
+    count++;
+    let father = document.createElement("div"); // aca temos un div para cada p
+    let myicon = document.createElement("i");
+    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5", count);
+    let text = document.createElement("p");
+    text.style.display = "inline-block";
+    text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
+    father.appendChild(text);
+    father.appendChild(myicon);
+    grabTexto.appendChild(father);
+    myicon.addEventListener("click", (e) => e.target.parentElement.remove());
+    total += parseInt(prod._price);
+  });
+  price.innerHTML = `Total ${total}$`;
+  grabTexto.appendChild(price);
+};
 
-const shoppingCart = document.querySelector("#botton-carrito").addEventListener("click", agregarCarrito) 
+const shoppingCart = document
+  .querySelector("#botton-carrito")
+  .addEventListener("click", agregarCarrito);
 
 // CLOSE CART
 const modalX = document
@@ -82,7 +95,7 @@ const modalCerrar = document
 
 // CART BOTTOM
 
-const $shoppingCartBottom = document.querySelector('#carritoBottom');
+const $shoppingCartBottom = document.querySelector("#carritoBottom");
 window.addEventListener("scroll", () => {
   if (document.documentElement.scrollTop > 98) {
     carritoBottom.style.display = "block";
@@ -90,37 +103,37 @@ window.addEventListener("scroll", () => {
     carritoBottom.style.display = "none";
   }
 
-window.addEventListener("scroll", () => {
-  if (document.documentElement.scrollTop < 98) {
-    grabModal.style.display = "none";
-  }
-})  
+  window.addEventListener("scroll", () => {
+    if (document.documentElement.scrollTop < 98) {
+      grabModal.style.display = "none";
+    }
+  });
 
   $shoppingCartBottom.addEventListener("click", () => {
     agregarCarrito();
-  })
-
-})
+  });
+});
 
 // WHATSAPP BUTTON
 
-const grabModalWSP = document.querySelector('#modalWSP');
-const grabFormWSP = document.querySelector('#formWSP');
-const grabWhatsapp = document.querySelector('#whatsapp').addEventListener('click', () => (grabModalWSP.style.display = 'flex'));
+const grabModalWSP = document.querySelector("#modalWSP");
+const grabFormWSP = document.querySelector("#formWSP");
+const grabWhatsapp = document
+  .querySelector("#whatsapp")
+  .addEventListener("click", () => (grabModalWSP.style.display = "flex"));
 
 const grabXWSP = document
-.querySelector('#xWSP')
-.addEventListener('click', () => (grabModalWSP.style.display = 'none'));
+  .querySelector("#xWSP")
+  .addEventListener("click", () => (grabModalWSP.style.display = "none"));
 const grabCerrarWSP = document
-.querySelector('#cerrarWSP')
-.addEventListener('click', () => (grabModalWSP.style.display = 'none'));
+  .querySelector("#cerrarWSP")
+  .addEventListener("click", () => (grabModalWSP.style.display = "none"));
 const grabEnviarWSP = document
-.querySelector('#enviarWSP')
-.addEventListener('click', () => {
+  .querySelector("#enviarWSP")
+  .addEventListener("click", () => {
+    let nombreForm = document.querySelector("#inputNombre").value;
+    let mensajeForm = document.querySelector("#inputMensaje").value;
 
-  let nombreForm = document.querySelector('#inputNombre').value;
-  let mensajeForm = document.querySelector('#inputMensaje').value;
-
-  let url =`https://api.whatsapp.com/send?phone=541123882740&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
-  window.open(url, '_blank');
-});
+    let url = `https://api.whatsapp.com/send?phone=541123882740&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+    window.open(url, "_blank");
+  });
