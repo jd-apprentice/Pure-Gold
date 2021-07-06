@@ -57,16 +57,13 @@ const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
   let total = 0;
-    const br = document.createElement("br");
     const price = document.createElement("p");
     const myicon = document.createElement("i");
     myicon.classList.add("bi-x-lg", "ms-4", "text-danger");
     grabModal.style.display = "flex";
     grabTexto.innerText = "";
     arrProduct.forEach((prod) => {
-      grabTexto.innerText += `${prod._name} Se anadio al carrito. Costo${prod._price}`;
-      grabTexto.in(myicon); // Necesita arreglos
-      grabTexto.appendChild(br);
+      grabTexto.innerHTML += `${prod._name} Se anadio al carrito. Costo${prod._price} ${myicon}`;
       total += parseInt(prod._price);
     });
     price.innerHTML = `Total ${total}$`;
