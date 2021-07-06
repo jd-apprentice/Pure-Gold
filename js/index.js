@@ -14,6 +14,7 @@ window.onload = () => {
 
 //POO
 const arrProduct = [];
+let arrNumeros = [];
 
 class Product {
   constructor(name, price, id) {
@@ -26,9 +27,12 @@ class Product {
 class addProducts {
   addProduct(product) {
     arrProduct.push(product);
+    arrNumeros.push(Product._id);
     localStorage.setItem("cart", JSON.stringify(arrProduct));
+    localStorage.setItem("itemID", JSON.stringify(arrNumeros));
   }
 }
+
 let addP = (product) => {
   const addProduct = new addProducts();
   addProduct.addProduct(product);
@@ -40,17 +44,24 @@ let addNumItem = () => {
   grabCarrito.innerHTML++;
 };
 
+let aumentarID = () => {
+  localStorage.getItem("itemID", ++(Product._id));
+}
+
 let insert = (e) => {
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
-  const product = new Product(name.textContent, price.textContent);
+  const id = divNamePrice.querySelector(".item");
+  const product = new Product(name.textContent, price.textContent, id.textContent);
   addP(product);
   addNumItem();
 };
+
 const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
+
 
 //SHOW CART
 const grabModal = document.querySelector("#modalCarrito");
@@ -75,6 +86,7 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => e.target.parentElement.remove());
+    myicon.addEventListener("click", (e) => localStorage.key("itemID").remove());
     total += parseInt(prod._price);
   });
   price.innerHTML = `Total ${total}$`;
