@@ -13,8 +13,8 @@ window.onload = () => {
 };
 
 //POO
+let id = 0;
 const arrProduct = [];
-
 class Product {
   constructor(name, price, id) {
     this._name = name;
@@ -32,6 +32,7 @@ class addProducts {
 let addP = (product) => {
   const addProduct = new addProducts();
   addProduct.addProduct(product);
+  id++;
 };
 
 let addNumItem = () => {
@@ -44,7 +45,7 @@ let insert = (e) => {
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
-  const product = new Product(name.textContent, price.textContent);
+  const product = new Product(name.textContent, price.textContent, id);
   addP(product);
   addNumItem();
 };
@@ -65,7 +66,7 @@ let agregarCarrito = () => {
   price.className = "text-center";
   arrProduct.forEach((prod) => {
     count++;
-    let father = document.createElement("div"); // aca temos un div para cada p
+    let father = document.createElement("div");
     let myicon = document.createElement("i");
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5", count);
     let text = document.createElement("p");
