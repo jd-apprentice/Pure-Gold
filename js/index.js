@@ -1,3 +1,13 @@
+// DOTENV - REQUIRE
+
+var requirejs = require('requirejs');
+
+requirejs.config({
+  nodeRequire: require
+});
+
+require("dotenv").config();
+
 // LOADING SPINNER
 
 window.onload = () => {
@@ -118,7 +128,7 @@ const modalCerrar = document
 const $shoppingCartBottom = document.querySelector("#carritoBottom");
 window.addEventListener("scroll", () => {
   if (document.documentElement.scrollTop > 98) {
-    carritoBottom.style.display = "block";
+    carritoBottom.style.display = "flex";
   } else {
     carritoBottom.style.display = "none";
   }
