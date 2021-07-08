@@ -1,12 +1,12 @@
 // DOTENV - REQUIRE
 
-var requirejs = require('requirejs');
+/* var requirejs = require('requirejs');
 
 requirejs.config({
   nodeRequire: require
 });
 
-require("dotenv").config();
+require("dotenv").config(); */
 
 // LOADING SPINNER
 
