@@ -80,12 +80,7 @@ let agregarCarrito = () => {
     let father = document.createElement("div");
     let myicon = document.createElement("i");
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
-<<<<<<< HEAD
-    myicon.setAttribute("id", count);
-    count++;
-=======
     father.setAttribute("id", prod._id);
->>>>>>> 34229b42edeb260aa295a8ab0c7c08b77bcdf8a1
     let text = document.createElement("p");
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
@@ -93,17 +88,12 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
-<<<<<<< HEAD
-      deleteProduct(myicon.id);
-      e.target.parentElement.remove();
-=======
       let ideano = father.id;
       deleteProduct(ideano);
       e.target.parentElement.remove();
       let encontrar = arrProduct.findIndex((prod) => prod._id == ideano);
       arrProduct.splice(encontrar, 1);
       console.log(ideano);
->>>>>>> 34229b42edeb260aa295a8ab0c7c08b77bcdf8a1
     });
     total += parseInt(prod._price);
   });
