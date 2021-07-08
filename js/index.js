@@ -1,4 +1,5 @@
 // LOADING SPINNER
+
 window.onload = () => {
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
@@ -11,10 +12,10 @@ window.onload = () => {
     addP(arrayP);
   });
 };
-
 //POO
 let id = 0;
 const arrProduct = [];
+
 class Product {
   constructor(name, price, id) {
     this._name = name;
@@ -29,10 +30,19 @@ class addProducts {
     localStorage.setItem("cart", JSON.stringify(arrProduct));
   }
 }
+
 let addP = (product) => {
   const addProduct = new addProducts();
   addProduct.addProduct(product);
   id++;
+};
+
+let deleteProduct = (productID) => {
+  let productos = JSON.parse(localStorage.getItem("cart"));
+  let index = productos.findIndex((elements) => elements._id == productID);
+  productos.splice(index, 1);
+  let trasf = JSON.stringify(productos);
+  localStorage.setItem("cart", trasf);
 };
 
 let addNumItem = () => {
@@ -49,6 +59,7 @@ let insert = (e) => {
   addP(product);
   addNumItem();
 };
+
 const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
@@ -59,23 +70,29 @@ const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
   let total = 0;
-  let count = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
   grabTexto.innerText = "";
   price.className = "text-center";
   arrProduct.forEach((prod) => {
-    count++;
     let father = document.createElement("div");
     let myicon = document.createElement("i");
-    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5", count);
+    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
+    father.setAttribute("id", prod._id);
     let text = document.createElement("p");
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
     father.appendChild(text);
     father.appendChild(myicon);
     grabTexto.appendChild(father);
-    myicon.addEventListener("click", (e) => e.target.parentElement.remove());
+    myicon.addEventListener("click", (e) => {
+      let ideano = father.id;
+      deleteProduct(ideano);
+      e.target.parentElement.remove();
+      let encontrar = arrProduct.findIndex((prod) => prod._id == ideano);
+      arrProduct.splice(encontrar, 1);
+      console.log(ideano);
+    });
     total += parseInt(prod._price);
   });
   price.innerHTML = `Total ${total}$`;
