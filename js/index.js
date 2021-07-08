@@ -1,4 +1,5 @@
 // LOADING SPINNER
+
 window.onload = () => {
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
@@ -11,11 +12,11 @@ window.onload = () => {
     addP(arrayP);
   });
 };
-
 //POO
 let id = 0;
 let arrNew = [];
 const arrProduct = [];
+
 class Product {
   constructor(name, price, id) {
     this._name = name;
@@ -71,7 +72,6 @@ const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
   let total = 0;
-  let count = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
   grabTexto.innerText = "";
@@ -80,8 +80,7 @@ let agregarCarrito = () => {
     let father = document.createElement("div");
     let myicon = document.createElement("i");
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
-    myicon.setAttribute("id", count);
-    count++;
+    father.setAttribute("id", prod._id);
     let text = document.createElement("p");
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
@@ -89,8 +88,12 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
-      deleteProduct(myicon.id);
+      let ideano = father.id;
+      deleteProduct(ideano);
       e.target.parentElement.remove();
+      let encontrar = arrProduct.findIndex((prod) => prod._id == ideano);
+      arrProduct.splice(encontrar, 1);
+      console.log(ideano);
     });
     total += parseInt(prod._price);
   });
