@@ -13,7 +13,6 @@ window.onload = () => {
   });
 };
 //POO
-let id = 0;
 const arrProduct = [];
 
 class Product {
@@ -34,7 +33,6 @@ class addProducts {
 let addP = (product) => {
   const addProduct = new addProducts();
   addProduct.addProduct(product);
-  id++;
 };
 
 let deleteProduct = (productID) => {
@@ -52,6 +50,7 @@ let addNumItem = () => {
 };
 
 let insert = (e) => {
+  let id = Math.random() * 10;
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
