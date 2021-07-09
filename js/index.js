@@ -111,7 +111,6 @@ let agregarCarrito = () => {
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
     father.setAttribute("id", prod._id);
     let text = document.createElement("p");
-    text.className = "ms-1"
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name}. Costo ${prod._price}`;
     father.appendChild(image);
