@@ -1,16 +1,19 @@
 // DOTENV - REQUIRE
 
-/* var requirejs = require('requirejs');
-
-requirejs.config({
-  nodeRequire: require
-});
-
-require("dotenv").config(); */
-
-// LOADING SPINNER
+// ONLOAD
 
 window.onload = () => {
+
+  var requirejs = require('requirejs');
+  require("dotenv").config();
+  requirejs.config({
+  nodeRequire: require,
+  requierejs: require,
+  dotenv: require
+  
+}); 
+
+  // SPINNER
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
   const grabCarrito = document.querySelector("#carrito-items");
@@ -162,6 +165,6 @@ const grabEnviarWSP = document
     let nombreForm = document.querySelector("#inputNombre").value;
     let mensajeForm = document.querySelector("#inputMensaje").value;
 
-    let url = `https://api.whatsapp.com/send?phone=541123882740&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+    let url = `https://api.whatsapp.com/send?phone=${process.env.TELEFONO_KEY}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
     window.open(url, "_blank");
   });

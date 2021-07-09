@@ -1,0 +1,27 @@
+{
+  "name": "pure-gold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-icons": "^1.5.0",
+    "bootstrap": "^5.0.2",
+    "bootswatch": "^5.0.2",
+    "dotenv": "^10.0.0",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jd-apprentice/Pure-Gold.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jd-apprentice/Pure-Gold/issues"
+  },
+  "homepage": "https://github.com/jd-apprentice/Pure-Gold#readme"
+}
