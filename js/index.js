@@ -26,6 +26,8 @@ window.onload = () => {
 
 //POO
 const arrProduct = [];
+const alert = document.querySelector(".alert");
+let cont = 0;
 
 class Product {
   constructor(name, price, id) {
@@ -61,7 +63,24 @@ let addNumItem = () => {
   grabCarrito.innerHTML++;
 };
 
+let delayAlert = () => {
+  setTimeout(() => {
+    alert.style.display = "none";
+  }, 2000);
+  alert.style.display = "flex";
+};
+
 let insert = (e) => {
+  const btn = e.target;
+  btn.classList.add(
+    "btn",
+    "btn-sm",
+    "btn-outline-warning",
+    "m-auto",
+    "prenda",
+    "disabled"
+  );
+  btn.innerText = "YA ESTA EN EL CARRITO";
   let id = Math.random() * 10;
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
@@ -69,6 +88,7 @@ let insert = (e) => {
   const product = new Product(name.textContent, price.textContent, id);
   addP(product);
   addNumItem();
+  delayAlert();
 };
 
 const btn = document
@@ -89,11 +109,16 @@ let agregarCarrito = () => {
   arrProduct.forEach((prod) => {
     let father = document.createElement("div");
     let myicon = document.createElement("i");
-    myicon.classList.add("bi-x-lg", "ms-1", "text-danger", "fs-6");
+    let image = document.createElement("img");
+    image.src = "./img/example.jpg";
+    image.classList.add("img-fluid", "d-inline-block", "img-thumbnail", "mt-2");
+    image.style.width = "100px";
+    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
     father.setAttribute("id", prod._id);
     let text = document.createElement("p");
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name}. Costo ${prod._price}`;
+    father.appendChild(image);
     father.appendChild(text);
     father.appendChild(myicon);
     grabTexto.appendChild(father);

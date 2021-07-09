@@ -179,6 +179,20 @@ a:hover {
   position: fixed;
 }
 
+.alert {
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content {
+  backdrop-filter: blur(10px) saturate(138%);
+  -webkit-backdrop-filter: blur(10px) saturate(138%);
+  background-color: rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
 @import "../node_modules/bootswatch/dist/materia/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootswatch/dist/materia/bootswatch";
