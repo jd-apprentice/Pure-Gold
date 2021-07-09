@@ -1,17 +1,15 @@
-// DOTENV - REQUIRE
-
 // ONLOAD
+
+// DOTENV - REQUIRE
 
 window.onload = () => {
 
-  var requirejs = require('requirejs');
+/*   var requirejs = require('requirejs');
   require("dotenv").config();
   requirejs.config({
   nodeRequire: require,
   requierejs: require,
-  dotenv: require
-  
-}); 
+  dotenv: require */
 
   // SPINNER
   const H = document.querySelector("#H");
@@ -25,6 +23,7 @@ window.onload = () => {
     addP(arrayP);
   });
 };
+
 //POO
 const arrProduct = [];
 
@@ -90,12 +89,11 @@ let agregarCarrito = () => {
   arrProduct.forEach((prod) => {
     let father = document.createElement("div");
     let myicon = document.createElement("i");
-    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
+    myicon.classList.add("bi-x-lg", "ms-1", "text-danger", "fs-6");
     father.setAttribute("id", prod._id);
     let text = document.createElement("p");
     text.style.display = "inline-block";
-    text.className = "text-white";
-    text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
+    text.innerHTML = `${prod._name}. Costo ${prod._price}`;
     father.appendChild(text);
     father.appendChild(myicon);
     grabTexto.appendChild(father);
