@@ -1,15 +1,10 @@
-// ONLOAD
+  // GLOBAL
 
-// DOTENV - REQUIRE
+  myKey = ("Jonathan");
+  
+  // ONLOAD
 
-window.onload = () => {
-
-/*   var requirejs = require('requirejs');
-  require("dotenv").config();
-  requirejs.config({
-  nodeRequire: require,
-  requierejs: require,
-  dotenv: require */
+  window.onload = () => {
 
   // SPINNER
   const H = document.querySelector("#H");
@@ -116,6 +111,7 @@ let agregarCarrito = () => {
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
     father.setAttribute("id", prod._id);
     let text = document.createElement("p");
+    text.className = "ms-1"
     text.style.display = "inline-block";
     text.innerHTML = `${prod._name}. Costo ${prod._price}`;
     father.appendChild(image);
@@ -191,6 +187,6 @@ const grabEnviarWSP = document
     let nombreForm = document.querySelector("#inputNombre").value;
     let mensajeForm = document.querySelector("#inputMensaje").value;
 
-    let url = `https://api.whatsapp.com/send?phone=${process.env.TELEFONO_KEY}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+    let url = `https://api.whatsapp.com/send?phone=${myKey}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
     window.open(url, "_blank");
   });
