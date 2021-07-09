@@ -91,6 +91,7 @@ let agregarCarrito = () => {
     father.setAttribute("id", prod._id);
     let text = document.createElement("p");
     text.style.display = "inline-block";
+    text.className = "text-white";
     text.innerHTML = `${prod._name} Se anadio al carrito. Costo${prod._price}`;
     father.appendChild(text);
     father.appendChild(myicon);
@@ -101,7 +102,9 @@ let agregarCarrito = () => {
       e.target.parentElement.remove();
       let encontrar = arrProduct.findIndex((prod) => prod._id == ideano);
       arrProduct.splice(encontrar, 1);
-      console.log(ideano);
+      localStorage.setItem("cont", Number(localStorage.getItem("cont")) - 1);
+      const grabCarrito = document.querySelector("#carrito-items");
+      grabCarrito.innerHTML = arrProduct.length;
     });
     total += parseInt(prod._price);
   });
