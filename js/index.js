@@ -1,28 +1,40 @@
-  // GLOBAL
+// GLOBAL
 
-  myKey = ("Jonathan");
-  
-  // ONLOAD
+myKey = "Jonathan";
 
-  window.onload = () => {
-
+// ONLOAD
+window.onload = () => {
   // SPINNER
+
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
   const grabCarrito = document.querySelector("#carrito-items");
   cont1.style.display = "none";
   H.classList.remove("overflow-hidden");
-  grabCarrito.innerHTML = localStorage.getItem("cont");
-  let productos = JSON.parse(localStorage.getItem("cart"));
+  grabCarrito.innerHTML = sessionStorage.getItem("cont");
+  let productos = JSON.parse(sessionStorage.getItem("cart"));
   productos.forEach((arrayP) => {
     addP(arrayP);
   });
+  let btnAnadir = document.querySelectorAll(".prenda");
+  let btnStorage = JSON.parse(sessionStorage.getItem("btn"));
+  btnStorage.forEach((btn) => {
+    addId(btn);
+  });
+
+  //ARREGLAR
+
+  btnAnadir.forEach((btn, i) => {
+    if (btn.id === btnStorage[btn.id]) {
+      btn.classList.add("disabled");
+    }
+  });
 };
 
-//POO
+//POO;
 const arrProduct = [];
+const arrB = [];
 const alert = document.querySelector(".alert");
-let cont = 0;
 
 class Product {
   constructor(name, price, id) {
@@ -32,12 +44,30 @@ class Product {
   }
 }
 
+class generarID {
+  constructor(id) {
+    this._id = id;
+  }
+}
+
 class addProducts {
   addProduct(product) {
     arrProduct.push(product);
-    localStorage.setItem("cart", JSON.stringify(arrProduct));
+    sessionStorage.setItem("cart", JSON.stringify(arrProduct));
   }
 }
+
+class addIDs {
+  addID(id) {
+    arrB.push(id);
+    sessionStorage.setItem("btn", JSON.stringify(arrB));
+  }
+}
+
+let addId = (id) => {
+  const addID = new addIDs();
+  addID.addID(id);
+};
 
 let addP = (product) => {
   const addProduct = new addProducts();
@@ -45,15 +75,15 @@ let addP = (product) => {
 };
 
 let deleteProduct = (productID) => {
-  let productos = JSON.parse(localStorage.getItem("cart"));
+  let productos = JSON.parse(sessionStorage.getItem("cart"));
   let index = productos.findIndex((elements) => elements._id == productID);
   productos.splice(index, 1);
   let trasf = JSON.stringify(productos);
-  localStorage.setItem("cart", trasf);
+  sessionStorage.setItem("cart", trasf);
 };
 
 let addNumItem = () => {
-  localStorage.setItem("cont", Number(localStorage.getItem("cont")) + 1);
+  sessionStorage.setItem("cont", Number(sessionStorage.getItem("cont")) + 1);
   const grabCarrito = document.querySelector("#carrito-items");
   grabCarrito.innerHTML++;
 };
@@ -66,22 +96,15 @@ let delayAlert = () => {
 };
 
 let insert = (e) => {
-  const btn = e.target;
-  btn.classList.add(
-    "btn",
-    "btn-sm",
-    "btn-outline-warning",
-    "m-auto",
-    "prenda",
-    "disabled"
-  );
-  btn.innerText = "YA ESTA EN EL CARRITO";
   let id = Math.random() * 10;
+  const btn = e.target;
+  btn.classList.add("disabled");
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
   const product = new Product(name.textContent, price.textContent, id);
   addP(product);
+  addId(btn.id);
   addNumItem();
   delayAlert();
 };
@@ -89,7 +112,6 @@ let insert = (e) => {
 const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
-
 
 //SHOW CART
 const grabModal = document.querySelector("#modalCarrito");
@@ -118,14 +140,19 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
+      total = total - parseInt(prod._price);
       let ideano = father.id;
       deleteProduct(ideano);
       e.target.parentElement.remove();
       let encontrar = arrProduct.findIndex((prod) => prod._id == ideano);
       arrProduct.splice(encontrar, 1);
-      localStorage.setItem("cont", Number(localStorage.getItem("cont")) - 1);
+      sessionStorage.setItem(
+        "cont",
+        Number(sessionStorage.getItem("cont")) - 1
+      );
       const grabCarrito = document.querySelector("#carrito-items");
       grabCarrito.innerHTML = arrProduct.length;
+      price.innerHTML = `Total ${total}$`;
     });
     total += parseInt(prod._price);
   });
@@ -161,9 +188,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  $shoppingCartBottom.addEventListener("click", () => {
-    agregarCarrito();
-  });
+  $shoppingCartBottom.addEventListener("click", agregarCarrito);
 });
 
 // WHATSAPP BUTTON
