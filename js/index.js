@@ -5,7 +5,8 @@ myKey = "Jonathan";
 // ONLOAD
 window.onload = () => {
   // SPINNER
-
+  const arrC = [];
+  const arrJ = [];
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
   const grabCarrito = document.querySelector("#carrito-items");
@@ -21,14 +22,18 @@ window.onload = () => {
   btnStorage.forEach((btn) => {
     addId(btn);
   });
-
-  //ARREGLAR
-
-  btnAnadir.forEach((btn, i) => {
-    if (btn.id === btnStorage[btn.id]) {
-      btn.classList.add("disabled");
-    }
+  btnAnadir.forEach((btn) => {
+    arrJ.push(btn);
   });
+  // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  console.log(arrJ);
+
+  // [4, 5];
+  //   for (let i = 0; i < btnStorage.length; i++) {
+  //     arrC.push(arrJ.indexOf(btnStorage[i])); //Ponga la posicion de esos elementos en un nuevo array
+  //     console.log(arrC);
+  //   }
 };
 
 //POO;
