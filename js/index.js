@@ -21,14 +21,6 @@ window.onload = () => {
   btnStorage.forEach((btn) => {
     addId(btn);
   });
-
-  //ARREGLAR
-
-  btnAnadir.forEach((btn, i) => {
-    if (btn.id === btnStorage[btn.id]) {
-      btn.classList.add("disabled");
-    }
-  });
 };
 
 //POO;
@@ -99,6 +91,7 @@ let insert = (e) => {
   let id = Math.random() * 10;
   const btn = e.target;
   btn.classList.add("disabled");
+  btn.innerText = ("EN EL CARRITO");
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
