@@ -5,8 +5,6 @@ myKey = "Jonathan";
 // ONLOAD
 window.onload = () => {
   // SPINNER
-  const arrC = [];
-  const arrJ = [];
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
   const grabCarrito = document.querySelector("#carrito-items");
@@ -20,25 +18,46 @@ window.onload = () => {
   let btnAnadir = document.querySelectorAll(".prenda");
   let btnStorage = JSON.parse(sessionStorage.getItem("btn"));
   btnStorage.forEach((btn) => {
-    addId(btn);
+    addId(parseInt(btn));
   });
-  btnAnadir.forEach((btn) => {
-    arrJ.push(btn);
-  });
-  // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+  for (let i = 0; i < btnAnadir.length; i++) {
+    arrJ[i] = parseInt(btnAnadir[i].id);
+  }
+
+  for (let i = 0; i < arrJ.length; i++) {
+    indice = arrJ.indexOf(arrB[i]);
+    if (indice != -1) {
+      arrB[indice] = arrJ[indice];
+    } else {
+      arrB[i] = -1;
+    }
+  }
+
+  for (let i = 0; i < arrB.length; i++) {
+    if (arrB[i] != i) {
+      arrB[i] = -1;
+    }
+  }
+
+  for (let i = 0; i < arrJ.length; i++) {
+    let existe = false;
+    if (arrJ[i] === arrB[i]) {
+      existe = true;
+    }
+    if (existe) {
+      btnAnadir[i].classList.add("disabled");
+      existe = false;
+    }
+  }
+  console.log(arrB);
   console.log(arrJ);
-
-  // [4, 5];
-  //   for (let i = 0; i < btnStorage.length; i++) {
-  //     arrC.push(arrJ.indexOf(btnStorage[i])); //Ponga la posicion de esos elementos en un nuevo array
-  //     console.log(arrC);
-  //   }
 };
 
 //POO;
+const arrB = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+const arrJ = [];
 const arrProduct = [];
-const arrB = [];
 const alert = document.querySelector(".alert");
 
 class Product {
@@ -64,7 +83,7 @@ class addProducts {
 
 class addIDs {
   addID(id) {
-    arrB.push(id);
+    arrB[id] = id;
     sessionStorage.setItem("btn", JSON.stringify(arrB));
   }
 }
@@ -109,7 +128,7 @@ let insert = (e) => {
   const name = divNamePrice.querySelector(".name");
   const product = new Product(name.textContent, price.textContent, id);
   addP(product);
-  addId(btn.id);
+  addId(parseInt(btn.id));
   addNumItem();
   delayAlert();
 };
@@ -135,16 +154,23 @@ let agregarCarrito = () => {
     image.src = "./img/example.jpg";
     image.classList.add("img-fluid", "d-inline-block", "img-thumbnail", "mt-2");
     image.style.width = "100px";
-    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
+    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5", prod._name);
     father.setAttribute("id", prod._id);
-    let text = document.createElement("p");
-    text.style.display = "inline-block";
-    text.innerHTML = `${prod._name}. Costo ${prod._price}`;
+    let nameModal = document.createElement("p");
+    let costo = document.createElement("p");
+    costo.style.display = "inline-block";
+    nameModal.style.display = "inline-block";
+    nameModal.innerHTML = `${prod._name}.`;
+    costo.innerHTML = `Costo ${prod._price}`;
     father.appendChild(image);
-    father.appendChild(text);
+    father.appendChild(nameModal);
+    father.appendChild(costo);
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
+      let idDeX = e.target.classList[4];
+      console.log(document.getElementsByName(idDeX[2]));
+      console.log(typeof idDeX);
       total = total - parseInt(prod._price);
       let ideano = father.id;
       deleteProduct(ideano);
