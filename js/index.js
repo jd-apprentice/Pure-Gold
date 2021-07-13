@@ -5,7 +5,6 @@ myKey = "Jonathan";
 // ONLOAD
 window.onload = () => {
   // SPINNER
-  const arrC = [];
   const arrJ = [];
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
@@ -25,18 +24,11 @@ window.onload = () => {
   btnAnadir.forEach((btn) => {
     arrJ.push(btn);
   });
-  // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-  console.log(arrJ);
-
-  // [4, 5];
-  //   for (let i = 0; i < btnStorage.length; i++) {
-  //     arrC.push(arrJ.indexOf(btnStorage[i])); //Ponga la posicion de esos elementos en un nuevo array
-  //     console.log(arrC);
-  //   }
+  /* checkCarrito(numTravel); */
 };
 
 //POO;
+let numTravel = 0;
 const arrProduct = [];
 const arrB = [];
 const alert = document.querySelector(".alert");
@@ -101,10 +93,10 @@ let delayAlert = () => {
 };
 
 let insert = (e) => {
+
   let id = Math.random() * 10;
   const btn = e.target;
   btn.classList.add("disabled");
-  btn.innerText = ("EN EL CARRITO");
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
   const name = divNamePrice.querySelector(".name");
@@ -113,7 +105,24 @@ let insert = (e) => {
   addId(btn.id);
   addNumItem();
   delayAlert();
+
 };
+
+/* let checkCarrito = (e) => {
+  const botones = ["Polera", "Pantalon", "Pollera", "Calzon", "Boxer", "Media", "Bufanda", "Campera", "Gorro"];
+  const grabCarrito = document.querySelector("#carrito-items");
+  let productos = JSON.parse(sessionStorage.getItem("cart"));
+
+  if (grabCarrito.innerHTML > 0) {
+    productos.forEach(prod => {
+      if (prod._name === botones[numTravel]) {
+        const btn = document.getElementById(numTravel); {
+          btn.classList.add("disabled");
+        } 
+      }
+    }
+  )}
+}; */
 
 const btn = document
   .querySelectorAll(".prenda")
@@ -124,6 +133,7 @@ const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
+
   let total = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
