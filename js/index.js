@@ -104,6 +104,17 @@ let deleteProduct = (productID) => {
   sessionStorage.setItem("cart", trasf);
 };
 
+let deleteStorage = (idEle) => {
+  let btnStorage = JSON.parse(sessionStorage.getItem("btn"));
+  for (let i = 0; i < btnStorage.length; i++) {
+    if (btnStorage[i] == idEle) {
+      btnStorage[i] = -1;
+    }
+  }
+  let newB = JSON.stringify(btnStorage);
+  sessionStorage.setItem("btn", newB);
+};
+
 let addNumItem = () => {
   sessionStorage.setItem("cont", Number(sessionStorage.getItem("cont")) + 1);
   const grabCarrito = document.querySelector("#carrito-items");
@@ -118,8 +129,8 @@ let delayAlert = () => {
 };
 
 let insert = (e) => {
-  let id = Math.random() * 10;
   const btn = e.target;
+  let id = btn.id;
   btn.classList.add("disabled");
   const divNamePrice = e.target.parentElement.parentElement;
   const price = divNamePrice.querySelector(".price");
@@ -140,10 +151,7 @@ const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
-  btnPress = JSON.parse(sessionStorage.getItem("btn"));
-  btnPress.forEach((btn) => {
-    console.log(btn);
-  });
+  const btnStorage = JSON.parse(sessionStorage.getItem("btn"));
   let total = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
@@ -171,6 +179,13 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
+      idAElim = parseInt(father.id);
+      deleteStorage(idAElim);
+      for (let i = 0; i < arrB.length; i++) {
+        if (arrB[i] == idAElim) {
+          arrB[i] = -1;
+        }
+      }
       let idDeX = e.target.id;
       btnCam = document.getElementsByClassName(idDeX)[0];
       btnCam.classList.remove("disabled");
