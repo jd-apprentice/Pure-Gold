@@ -270,7 +270,7 @@ const grabEnviarWSP = document
   let nombreForm = document.querySelector("#inputNombre").value;
   let mensajeForm = document.querySelector("#inputMensaje").value;
 
-  let url = `https://api.whatsapp.com/send?phone=${tel.TELEFONO}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+  let url = `https://api.whatsapp.com/send?phone=${tel.OWNER}&text=NOMBRE: ${nombreForm} ASUNTO DE LA CONSULTA: ${mensajeForm}`;
   window.open(url, "_blank");
 });
 
@@ -295,6 +295,6 @@ const grabComprarCarrito = document
   let itemCarrito = `${arrWspNames}`;
   let precioCarrito = `A PAGAR: $${total}`;
 
-  let url = `https://api.whatsapp.com/send?phone=${asd}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
+  let url = `https://api.whatsapp.com/send?phone=${tel.SELLER}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
   window.open(url, "_blank");
 });
