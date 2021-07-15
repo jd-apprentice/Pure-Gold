@@ -51,6 +51,22 @@ window.onload = () => {
   }
 };
 
+// FIREBASE
+
+var db = firebase.firestore();
+
+/* firebase.initializeApp({
+  apiKey: 'AIzaSyBEbMizeuVev1Is_F29WP5NFf96ns0vlP8',
+  authDomain: 'tienda-online-f3909.firebaseapp.com',
+  projectId: 'tienda-online-f3909'
+}); */
+
+db.collection("Datos").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data.TELEFONO}`);
+  });
+});
+
 //POO;
 const arrB = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 const arrJ = [];
