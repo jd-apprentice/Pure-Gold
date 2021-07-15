@@ -1,7 +1,3 @@
-// GLOBAL
-
-myKey = "Jonathan";
-
 // ONLOAD
 window.onload = () => {
   // SPINNER
@@ -20,6 +16,8 @@ window.onload = () => {
   btnStorage.forEach((btn) => {
     addId(parseInt(btn));
   });
+
+  // CHECK FOR BUTTONS
 
   for (let i = 0; i < btnAnadir.length; i++) {
     arrJ[i] = parseInt(btnAnadir[i].id);
@@ -50,8 +48,6 @@ window.onload = () => {
       existe = false;
     }
   }
-  console.log(arrB);
-  console.log(arrJ);
 };
 
 //POO;
@@ -188,8 +184,6 @@ let agregarCarrito = () => {
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
       let idDeX = e.target.classList[4];
-      console.log(document.getElementsByName(idDeX[2]));
-      console.log(typeof idDeX);
       total = total - parseInt(prod._price);
       let ideano = father.id;
       deleteProduct(ideano);
@@ -261,6 +255,6 @@ const grabEnviarWSP = document
     let nombreForm = document.querySelector("#inputNombre").value;
     let mensajeForm = document.querySelector("#inputMensaje").value;
 
-    let url = `https://api.whatsapp.com/send?phone=${myKey}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+    let url = `https://api.whatsapp.com/send?phone=${TELEFONO}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
     window.open(url, "_blank");
   });

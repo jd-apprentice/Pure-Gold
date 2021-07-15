@@ -1,7 +1,7 @@
 {
   "name": "pure-gold",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tienda online feria americana",
   "main": "index.js",
   "dependencies": {
     "bootstrap": "^5.0.2",
