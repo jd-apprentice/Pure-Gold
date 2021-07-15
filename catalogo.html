@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta rt" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feria Americana PURE GOLD</title>
     <link rel="shortcut icon" type="image/jpg" href="img/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -371,12 +371,35 @@
   </div>
 
   <i id="whatsapp" class="bi bi-whatsapp fs-1" data-bs-toggle="modal" data-bs-target="#modalWSP"></i>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+    <script>
+      // Configuracion Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyBEbMizeuVev1Is_F29WP5NFf96ns0vlP8",
+        authDomain: "tienda-online-f3909.firebaseapp.com",
+        projectId: "tienda-online-f3909",
+        storageBucket: "tienda-online-f3909.appspot.com",
+        messagingSenderId: "662702990686",
+        appId: "1:662702990686:web:e6e7e3f0f04c18598e9bcf"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script src="./js/index.js"></script>
   </body>
 </html>

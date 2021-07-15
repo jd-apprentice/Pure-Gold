@@ -1,5 +1,10 @@
 // ONLOAD
-window.onload = () => {
+window.onload = async () => {
+  const obtenerDatos = () => bd.collection('Datos').get();
+  const querySnapshot = await obtenerDatos();
+  querySnapshot.forEach(doc => {
+    tel = doc.data()
+  })
   // SPINNER
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
@@ -50,6 +55,8 @@ window.onload = () => {
   }
 };
 
+const bd = firebase.firestore();
+let tel = 0;
 //POO;
 const arrB = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 const arrJ = [];
@@ -138,7 +145,6 @@ let insert = (e) => {
   addId(parseInt(btn.id));
   addNumItem();
   delayAlert();
-
 };
 
 const btn = document
@@ -170,7 +176,7 @@ let agregarCarrito = () => {
     costo.style.display = "inline-block";
     nameModal.style.display = "inline-block";
     nameModal.innerHTML = `${prod._name}.`;
-    nameModal.classList.add("ms-1")
+    nameModal.classList.add("ms-1");
     costo.innerHTML = `Costo ${prod._price}`;
     father.appendChild(image);
     father.appendChild(nameModal);
@@ -203,7 +209,7 @@ let agregarCarrito = () => {
       price.innerHTML = `Total ${total}$`;
     });
     total += parseInt(prod._price);
-});
+  });
   price.innerHTML = `Total ${total}$`;
   grabTexto.appendChild(price);
 };
@@ -259,32 +265,31 @@ const grabEnviarWSP = document
     let nombreForm = document.querySelector("#inputNombre").value;
     let mensajeForm = document.querySelector("#inputMensaje").value;
 
-    let url = `https://api.whatsapp.com/send?phone=${TELEFONO}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
+    let url = `https://api.whatsapp.com/send?phone=${tel.TELEFONO}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
     window.open(url, "_blank");
   });
 
 // COMPRAR BTN
-  
+
 const grabComprarCarrito = document
   .querySelector("#modalComprar")
   .addEventListener("click", () => {
+    total = 0;
+    arrWspNames = [];
 
-  total = 0;
-  arrWspNames = [];
-  
-  const elementos = JSON.parse(sessionStorage.getItem("cart"));
+    const elementos = JSON.parse(sessionStorage.getItem("cart"));
 
-  for (let i = 0; i < elementos.length; i++) {
-    total += parseInt(elementos[i]._price);
+    for (let i = 0; i < elementos.length; i++) {
+      total += parseInt(elementos[i]._price);
     }
 
-  for (let i = 0; i < elementos.length; i++) {
-    arrWspNames.push(" " + elementos[i]._name);
-  }
+    for (let i = 0; i < elementos.length; i++) {
+      arrWspNames.push(" " + elementos[i]._name);
+    }
 
-  let itemCarrito = `${arrWspNames}`;
-  let precioCarrito = `A PAGAR: $${total}`;
-  
-  let url = `https://api.whatsapp.com/send?phone=${asd}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
-  window.open(url, "_blank");
-})
+    let itemCarrito = `${arrWspNames}`;
+    let precioCarrito = `A PAGAR: $${total}`;
+
+    let url = `https://api.whatsapp.com/send?phone=${asd}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
+    window.open(url, "_blank");
+  });
