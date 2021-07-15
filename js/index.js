@@ -141,22 +141,6 @@ let insert = (e) => {
 
 };
 
-/* let checkCarrito = (e) => {
-  const botones = ["Polera", "Pantalon", "Pollera", "Calzon", "Boxer", "Media", "Bufanda", "Campera", "Gorro"];
-  const grabCarrito = document.querySelector("#carrito-items");
-  let productos = JSON.parse(sessionStorage.getItem("cart"));
-
-  if (grabCarrito.innerHTML > 0) {
-    productos.forEach(prod => {
-      if (prod._name === botones[numTravel]) {
-        const btn = document.getElementById(numTravel); {
-          btn.classList.add("disabled");
-        } 
-      }
-    }
-  )}
-}; */
-
 const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
@@ -166,7 +150,6 @@ const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
-  const btnStorage = JSON.parse(sessionStorage.getItem("btn"));
   let total = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
@@ -187,6 +170,7 @@ let agregarCarrito = () => {
     costo.style.display = "inline-block";
     nameModal.style.display = "inline-block";
     nameModal.innerHTML = `${prod._name}.`;
+    nameModal.classList.add("ms-1")
     costo.innerHTML = `Costo ${prod._price}`;
     father.appendChild(image);
     father.appendChild(nameModal);
@@ -219,7 +203,7 @@ let agregarCarrito = () => {
       price.innerHTML = `Total ${total}$`;
     });
     total += parseInt(prod._price);
-  });
+});
   price.innerHTML = `Total ${total}$`;
   grabTexto.appendChild(price);
 };
@@ -279,4 +263,28 @@ const grabEnviarWSP = document
     window.open(url, "_blank");
   });
 
-//GG?
+// COMPRAR BTN
+  
+const grabComprarCarrito = document
+  .querySelector("#modalComprar")
+  .addEventListener("click", () => {
+
+  total = 0;
+  arrWspNames = [];
+  
+  const elementos = JSON.parse(sessionStorage.getItem("cart"));
+
+  for (let i = 0; i < elementos.length; i++) {
+    total += parseInt(elementos[i]._price);
+    }
+
+  for (let i = 0; i < elementos.length; i++) {
+    arrWspNames.push(" " + elementos[i]._name);
+  }
+
+  let itemCarrito = `${arrWspNames}`;
+  let precioCarrito = `A PAGAR: $${total}`;
+  
+  let url = `https://api.whatsapp.com/send?phone=${asd}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
+  window.open(url, "_blank");
+})
