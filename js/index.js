@@ -50,8 +50,6 @@ window.onload = () => {
       existe = false;
     }
   }
-  console.log(arrB);
-  console.log(arrJ);
 };
 
 //POO;
@@ -142,6 +140,10 @@ const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
 let agregarCarrito = () => {
+  btnPress = JSON.parse(sessionStorage.getItem("btn"));
+  btnPress.forEach((btn) => {
+    console.log(btn);
+  });
   let total = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
@@ -154,7 +156,8 @@ let agregarCarrito = () => {
     image.src = "./img/example.jpg";
     image.classList.add("img-fluid", "d-inline-block", "img-thumbnail", "mt-2");
     image.style.width = "100px";
-    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5", prod._name);
+    myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
+    myicon.setAttribute("id", prod._name);
     father.setAttribute("id", prod._id);
     let nameModal = document.createElement("p");
     let costo = document.createElement("p");
@@ -168,9 +171,9 @@ let agregarCarrito = () => {
     father.appendChild(myicon);
     grabTexto.appendChild(father);
     myicon.addEventListener("click", (e) => {
-      let idDeX = e.target.classList[4];
-      console.log(document.getElementsByName(idDeX[2]));
-      console.log(typeof idDeX);
+      let idDeX = e.target.id;
+      btnCam = document.getElementsByClassName(idDeX)[0];
+      btnCam.classList.remove("disabled");
       total = total - parseInt(prod._price);
       let ideano = father.id;
       deleteProduct(ideano);
