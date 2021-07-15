@@ -1,5 +1,6 @@
 // ONLOAD
 window.onload = () => {
+
   // SPINNER
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
