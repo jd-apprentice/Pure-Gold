@@ -263,3 +263,5 @@ const grabEnviarWSP = document
     let url = `https://api.whatsapp.com/send?phone=${myKey}&text=Nombre: ${nombreForm} Mensaje: ${mensajeForm}`;
     window.open(url, "_blank");
   });
+
+//GG?
