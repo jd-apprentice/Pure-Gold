@@ -66,8 +66,8 @@ a:hover {
 }
 
 .contacto-bg {
-  background-color: #ff9800;
-  background-size: auto;
+  background-image: url("../img/contactobg.jpg");
+  background-size: contain;
 }
 
 #contact {
@@ -185,7 +185,7 @@ a:hover {
 
 #carritoBottom {
   right: 20px;
-  bottom: 30px;
+  bottom: 27px;
   cursor: pointer;
   position: fixed;
   display: none;
@@ -193,7 +193,7 @@ a:hover {
 
 #whatsapp {
   left: 20px;
-  bottom: 25px;
+  bottom: 22px;
   cursor: pointer;
   position: fixed;
 }
@@ -214,6 +214,15 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.modal.show #modalCarrito {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*!
