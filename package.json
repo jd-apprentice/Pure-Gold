@@ -1,0 +1,23 @@
+{
+  "name": "pure-gold",
+  "version": "1.0.0",
+  "description": "E-commerce basico para pure gold, una feria americana",
+  "main": "index.js",
+  "scripts": {
+    "build": "purgecss --css css/bootstrap.css --content contacto.html -o css/contacto.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jd-apprentice/Pure-Gold.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jd-apprentice/Pure-Gold/issues"
+  },
+  "homepage": "https://github.com/jd-apprentice/Pure-Gold#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "bootswatch": "^5.0.2"
+  }
+}
