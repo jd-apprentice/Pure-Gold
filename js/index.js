@@ -1,5 +1,5 @@
 // ONLOAD
-  window.onload = async () => {
+window.onload = async () => {
   const obtenerDatos = () => bd.collection('Datos').get();
   const querySnapshot = await obtenerDatos();
   querySnapshot.forEach(doc => {
@@ -223,31 +223,31 @@ const shoppingCart = document
   .querySelector("#botton-carrito")
   .addEventListener("click", agregarCarrito);
 
-  // CLOSE CART
+// CLOSE CART
 const modalX = document
-.getElementById("modalX")
-.addEventListener("click", () => (grabModal.style.display = "none"));
+  .getElementById("modalX")
+  .addEventListener("click", () => (grabModal.style.display = "none"));
 const modalCerrar = document
-.getElementById("modalCerrar")
-.addEventListener("click", () => (grabModal.style.display = "none"));
+  .getElementById("modalCerrar")
+  .addEventListener("click", () => (grabModal.style.display = "none"));
 
 // CART BOTTOM
 
 const $shoppingCartBottom = document.querySelector("#carritoBottom");
 window.addEventListener("scroll", () => {
-if (document.documentElement.scrollTop > 98) {
-  carritoBottom.style.display = "flex";
-} else {
-  carritoBottom.style.display = "none";
-}
-
-window.addEventListener("scroll", () => {
-  if (document.documentElement.scrollTop < 98) {
-    grabModal.style.display = "none";
+  if (document.documentElement.scrollTop > 98) {
+    carritoBottom.style.display = "flex";
+  } else {
+    carritoBottom.style.display = "none";
   }
-});
 
-$shoppingCartBottom.addEventListener("click", agregarCarrito);
+  window.addEventListener("scroll", () => {
+    if (document.documentElement.scrollTop < 98) {
+      grabModal.style.display = "none";
+    }
+  });
+
+  $shoppingCartBottom.addEventListener("click", agregarCarrito);
 });
 
 // WHATSAPP BUTTON
@@ -255,46 +255,46 @@ $shoppingCartBottom.addEventListener("click", agregarCarrito);
 const grabModalWSP = document.querySelector("#modalWSP");
 const grabFormWSP = document.querySelector("#formWSP");
 const grabWhatsapp = document
-.querySelector("#whatsapp")
-.addEventListener("click", () => (grabModalWSP.style.display = "flex"));
+  .querySelector("#whatsapp")
+  .addEventListener("click", () => (grabModalWSP.style.display = "flex"));
 
 const grabXWSP = document
-.querySelector("#xWSP")
-.addEventListener("click", () => (grabModalWSP.style.display = "none"));
+  .querySelector("#xWSP")
+  .addEventListener("click", () => (grabModalWSP.style.display = "none"));
 const grabCerrarWSP = document
-.querySelector("#cerrarWSP")
-.addEventListener("click", () => (grabModalWSP.style.display = "none"));
+  .querySelector("#cerrarWSP")
+  .addEventListener("click", () => (grabModalWSP.style.display = "none"));
 const grabEnviarWSP = document
-.querySelector("#enviarWSP")
-.addEventListener("click", () => {
-  let nombreForm = document.querySelector("#inputNombre").value;
-  let mensajeForm = document.querySelector("#inputMensaje").value;
+  .querySelector("#enviarWSP")
+  .addEventListener("click", () => {
+    let nombreForm = document.querySelector("#inputNombre").value;
+    let mensajeForm = document.querySelector("#inputMensaje").value;
 
-  let url = `https://api.whatsapp.com/send?phone=${tel.OWNER}&text=NOMBRE: ${nombreForm} ASUNTO DE LA CONSULTA: ${mensajeForm}`;
-  window.open(url, "_blank");
-});
+    let url = `https://api.whatsapp.com/send?phone=${tel.OWNER}&text=NOMBRE: ${nombreForm} ASUNTO DE LA CONSULTA: ${mensajeForm}`;
+    window.open(url, "_blank");
+  });
 
 // COMPRAR BTN
 
 const grabComprarCarrito = document
-.querySelector("#modalComprar")
-.addEventListener("click", () => {
-  total = 0;
-  arrWspNames = [];
+  .querySelector("#modalComprar")
+  .addEventListener("click", () => {
+    total = 0;
+    arrWspNames = [];
 
-  const elementos = JSON.parse(sessionStorage.getItem("cart"));
+    const elementos = JSON.parse(sessionStorage.getItem("cart"));
 
-  for (let i = 0; i < elementos.length; i++) {
-    total += parseInt(elementos[i]._price);
-  }
+    for (let i = 0; i < elementos.length; i++) {
+      total += parseInt(elementos[i]._price);
+    }
 
-  for (let i = 0; i < elementos.length; i++) {
-    arrWspNames.push(" " + elementos[i]._name);
-  }
+    for (let i = 0; i < elementos.length; i++) {
+      arrWspNames.push(" " + elementos[i]._name);
+    }
 
-  let itemCarrito = `${arrWspNames}`;
-  let precioCarrito = `A PAGAR: $${total}`;
+    let itemCarrito = `${arrWspNames}`;
+    let precioCarrito = `A PAGAR: $${total}`;
 
-  let url = `https://api.whatsapp.com/send?phone=${tel.SELLER}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
-  window.open(url, "_blank");
-});
+    let url = `https://api.whatsapp.com/send?phone=${tel.SELLER}&text=Hola me gustaria comprar los siguientes PRODUCTOS: ${itemCarrito}. TOTAL ${precioCarrito}`;
+    window.open(url, "_blank");
+  });
