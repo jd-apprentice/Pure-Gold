@@ -1,16 +1,6 @@
 # 💛 Pure Gold - Feria Americana 💛
 
-Landing Page
-
 <img src="https://cdn.discordapp.com/attachments/780523152059924552/867183521561837598/index.png">
-
-Catalogo
-
-<img src="https://cdn.discordapp.com/attachments/780523152059924552/867183575778852864/catalogo.png">
-
-Contacto
-
-<img src="https://cdn.discordapp.com/attachments/780523152059924552/867183479099359263/contacto.png">
 
 ## Que es Pure Gold 💛
 
