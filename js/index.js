@@ -154,7 +154,7 @@ const btn = document
   .querySelectorAll(".prenda")
   .forEach((btn) => btn.addEventListener("click", insert));
 
-//SHOW CART
+//SHOW Cart
 const grabModal = document.querySelector("#modalCarrito");
 const grabTexto = document.querySelector("#modalTexto");
 
