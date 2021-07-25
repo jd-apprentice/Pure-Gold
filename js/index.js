@@ -1,10 +1,10 @@
 // ONLOAD
 window.onload = async () => {
-  const obtenerDatos = () => bd.collection('Datos').get();
+  const obtenerDatos = () => bd.collection("Datos").get();
   const querySnapshot = await obtenerDatos();
-  querySnapshot.forEach(doc => {
-    tel = doc.data()
-  })
+  querySnapshot.forEach((doc) => {
+    tel = doc.data();
+  });
   // SPINNER
   const H = document.querySelector("#H");
   const cont1 = document.querySelector("#spinner");
@@ -55,7 +55,7 @@ window.onload = async () => {
   }
 };
 
-// FIREBASE 
+// FIREBASE
 
 const bd = firebase.firestore();
 let tel = 0;
@@ -162,6 +162,7 @@ let agregarCarrito = () => {
   let total = 0;
   const price = document.createElement("p");
   grabModal.style.display = "flex";
+  grabModal.style.justifyContent = "center";
   grabTexto.innerText = "";
   price.className = "text-center";
   arrProduct.forEach((prod) => {
