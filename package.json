@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "E-commerce basico para pure gold, una feria americana",
   "main": "index.js",
-  "scripts": {
-    "build": "purgecss --css css/bootstrap.css --content contacto.html -o css/contacto.css"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jd-apprentice/Pure-Gold.git"
