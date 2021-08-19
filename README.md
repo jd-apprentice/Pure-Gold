@@ -22,7 +22,7 @@ sus botones para redes sociales que simplemente es un boton que te lleva a Insta
 
 ## Donde puedo ver la pagina? 🌐
 
-La pagina fue alojada en GitHub-Pages y la podes ver en este [Link](https://jd-apprentice.github.io/Pure-Gold/)
+La pagina fue alojada en Vercel y la podes ver en este [Link](https://puregold.com.ar/)
 
 ## Tecnologias y herramientas usadas ✂️
 
