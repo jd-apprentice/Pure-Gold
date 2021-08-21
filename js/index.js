@@ -271,7 +271,7 @@ const grabEnviarWSP = document
     let nombreForm = document.querySelector("#inputNombre").value;
     let mensajeForm = document.querySelector("#inputMensaje").value;
 
-    let url = `https://api.whatsapp.com/send?phone=${tel.OWNER}&text=NOMBRE: ${nombreForm} ASUNTO DE LA CONSULTA: ${mensajeForm}`;
+    let url = `https://api.whatsapp.com/send?phone=${tel.SELLER}&text=NOMBRE: ${nombreForm} ASUNTO DE LA CONSULTA: ${mensajeForm}`;
     window.open(url, "_blank");
   });
 
