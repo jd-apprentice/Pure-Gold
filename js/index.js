@@ -55,8 +55,21 @@ window.onload = async () => {
   }
 };
 
-// FIREBASE
+// Objetos
 
+const images = {
+  "0": "./img/img/feria02.jpeg",
+  "1": "./img/img/feria03.jpeg",
+  "2": "./img/img/feria04.jpeg",
+  "3": "./img/img/feria06.jpeg",
+  "4": "./img/img/feria08.jpeg",
+  "5": "./img/img/feria15.jpeg",
+  "6": "./img/img/feria16.jpeg",
+  "7": "./img/img/feria19.jpeg",
+  "8": "./img/img/feria20.jpeg",
+}
+
+// FIREBASE
 const bd = firebase.firestore();
 let tel = 0;
 
@@ -169,9 +182,9 @@ let agregarCarrito = () => {
     let father = document.createElement("div");
     let myicon = document.createElement("i");
     let image = document.createElement("img");
-    image.src = "./img/example.jpg";
+    image.src = images[prod._id];
     image.classList.add("img-fluid", "d-inline-block", "img-thumbnail", "mt-2");
-    image.style.width = "100px";
+    image.style.width = "150px";
     myicon.classList.add("bi-x-lg", "ms-3", "text-danger", "fs-5");
     myicon.setAttribute("id", prod._name);
     father.setAttribute("id", prod._id);
